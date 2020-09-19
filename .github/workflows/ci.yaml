@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # .NET Core SDK Version to use; x will use the latest version of the 3.1 channel
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
+        with:
+          username: mladedav
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: mladedav/data-platform-api
+          path: .
+          dockerfile: ./docker/Dockerfile
+          tags: latest,${{ github.run_number }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install civo
+        uses: civo/action-civo@v1.0.0
+        with:
+          token: ${{ secrets.CIVO_TOKEN }}
+
+      - name: Install helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.3.1
+
+      - uses: actions/checkout@v2
+
+      - name: Connect to cluster
+        run: |
+          mkdir $HOME/.kube
+          civo kubernetes config --save --yes mladedav-dev
+          helm upgrade --install --set dockerTag=${GITHUB_RUN_NUMBER} data-platform-api ${GITHUB_WORKSPACE}/helm

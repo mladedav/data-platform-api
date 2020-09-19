@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.name }}-dpl
+  labels:
+    app: {{ .Chart.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.name }}
+    spec:
+      containers:
+      - name: default
+        image: mladedav/data-platform-api:{{ .Values.dockerTag }}
+        ports:
+        - containerPort: 5000

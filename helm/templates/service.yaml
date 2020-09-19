@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.name }}-svc
+spec:
+  selector:
+    app: {{ .Chart.name }}
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
