@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Chart.name }}-ing
+  name: {{ .Chart.Name }}-ing
   annotations:
     # kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  # - host:
-  - http:
+  - host: data.mladedav.ml
+    http:
       paths:
       - path: /
         backend:
-          serviceName: {{ .Chart.name }}-svc
+          serviceName: {{ .Chart.Name }}-svc
           servicePort: 80

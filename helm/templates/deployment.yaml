@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.name }}-dpl
+  name: {{ .Chart.Name }}-dpl
   labels:
-    app: {{ .Chart.name }}
+    app: {{ .Chart.Name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Chart.name }}
+      app: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Chart.name }}
+        app: {{ .Chart.Name }}
     spec:
       containers:
       - name: default

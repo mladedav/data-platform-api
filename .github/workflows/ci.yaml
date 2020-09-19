@@ -17,10 +17,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # .NET Core SDK Version to use; x will use the latest version of the 3.1 channel
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
