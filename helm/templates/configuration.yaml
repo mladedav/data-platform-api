@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Char.Name}}-config
+type: Opaque
+stringData:
+  appsettings.json: |
+    {
+      "Mongo": {
+        "ConnectionString": "{{ .Values.mongoConnectionString }}",
+        "DatabaseName": "DataPlatform",
+        "CollectionName": "Weather"
+      }
+    }
