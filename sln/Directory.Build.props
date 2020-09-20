@@ -1,0 +1,13 @@
+<Project>
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <Features>strict</Features>
+
+        <Authors>David Mládek (david.mladek.cz@gmail.com)</Authors>        
+
+        <SolutionFileName>$([System.IO.Directory]::GetFiles($(MSBuildThisFileDirectory), "*.sln")[0])</SolutionFileName>
+        <SolutionName>$([System.IO.Path]::GetFileNameWithoutExtension($(SolutionFileName)))</SolutionName>
+        <RootNamespace>$(DatamoleSolutionName).$(MSBuildProjectName)</RootNamespace>
+    </PropertyGroup>
+</Project>

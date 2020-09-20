@@ -21,6 +21,10 @@ namespace Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureAppConfiguration((context, builder) =>
+                {
+                    builder.AddJsonFile("/config/appsettings.json", context.HostingEnvironment.IsProduction());
                 });
     }
 }

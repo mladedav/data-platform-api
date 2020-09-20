@@ -1,6 +1,6 @@
 using System;
 
-namespace Api
+namespace Domain
 {
     public class WeatherReading
     {
