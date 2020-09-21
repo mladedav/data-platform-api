@@ -10,7 +10,6 @@ spec:
   - hosts:
     - {{ .Values.domain}}
     secretName: {{ .Chart.Name }}-tls
-spec:
   rules:
   - host: {{ .Values.domain}}
     http:
