@@ -44,10 +44,14 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - name: Connect to cluster
+      - name: Connect to cluster and deploy helm
         env:
           MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
         run: |
           mkdir $HOME/.kube
           civo kubernetes config --save --yes mladedav-dev
-          helm upgrade --install --set dockerTag=${GITHUB_RUN_NUMBER} --set mongoConnectionString=${MONGO_CONNECTION_STRING} data-platform-api ${GITHUB_WORKSPACE}/helm
+          helm upgrade --install \
+            --set dockerTag=${GITHUB_RUN_NUMBER} \
+            --set domain=data.mladedav.ml \
+            --set mongoConnectionString=${MONGO_CONNECTION_STRING} \
+            data-platform-api ${GITHUB_WORKSPACE}/helm

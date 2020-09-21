@@ -24,7 +24,7 @@ namespace Api
                 })
                 .ConfigureAppConfiguration((context, builder) =>
                 {
-                    builder.AddJsonFile("/config/appsettings.json", context.HostingEnvironment.IsProduction());
+                    builder.AddJsonFile("/config/appsettings.json", context.HostingEnvironment.IsDevelopment());
                 });
     }
 }
