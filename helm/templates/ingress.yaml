@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.domain}}
-    secretName: ellipsoid-tlskk
+    secretName: {{ .Chart.Name }}-tls
 spec:
   rules:
   - host: {{ .Values.domain}}
