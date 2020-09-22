@@ -1,4 +1,4 @@
-namespace Infrastructure
+namespace Mladedav.DataPlatform.Infrastructure
 {
     public class MongoSettings
     {

@@ -8,6 +8,6 @@
 
         <SolutionFileName>$([System.IO.Directory]::GetFiles($(MSBuildThisFileDirectory), "*.sln")[0])</SolutionFileName>
         <SolutionName>$([System.IO.Path]::GetFileNameWithoutExtension($(SolutionFileName)))</SolutionName>
-        <RootNamespace>$(DatamoleSolutionName).$(MSBuildProjectName)</RootNamespace>
+        <RootNamespace>$(SolutionName).$(MSBuildProjectName)</RootNamespace>
     </PropertyGroup>
 </Project>

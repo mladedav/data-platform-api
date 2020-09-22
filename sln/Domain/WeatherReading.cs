@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain
+namespace Mladedav.DataPlatform.Domain
 {
     public class WeatherReading
     {

@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Mladedav.DataPlatform.Domain
 {
     public class WeatherService
     {

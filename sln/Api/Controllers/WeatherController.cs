@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Mladedav.DataPlatform.Domain;
 
-namespace Api.Controllers
+namespace Mladedav.DataPlatform.Api.Controllers
 {
     [ApiController]
     [Route("/api/v1/[controller]")]

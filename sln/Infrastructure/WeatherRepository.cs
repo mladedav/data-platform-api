@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Domain;
+using Mladedav.DataPlatform.Domain;
 using MongoDB.Driver;
 
-namespace Infrastructure
+namespace Mladedav.DataPlatform.Infrastructure
 {
     public class WeatherRepository : IWeatherRepository
     {
