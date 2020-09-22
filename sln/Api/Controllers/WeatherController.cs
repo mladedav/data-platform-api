@@ -18,8 +18,19 @@ namespace Mladedav.DataPlatform.Api.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAsync([FromQuery]int start, [FromQuery]int count)
+        {
+            if (start < 0 || count < 0)
+            {
+                return BadRequest();
+            }
+            var result = await _service.GetAsync(start, count);
+            return Ok(result);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]WeatherReading reading)
+        public async Task<IActionResult> PostAsync([FromBody]WeatherReading reading)
         {
             _logger.LogDebug(reading.ToString());
             await _service.SaveAsync(reading);

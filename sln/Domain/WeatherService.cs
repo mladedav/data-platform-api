@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Mladedav.DataPlatform.Domain
@@ -11,6 +12,7 @@ namespace Mladedav.DataPlatform.Domain
             _repository = repository;
         }
 
+        public Task<List<WeatherReading>> GetAsync(int start, int count) => _repository.GetAsync(start, count);
         public Task SaveAsync(WeatherReading reading) => _repository.SaveAsync(reading);
     }
 }
