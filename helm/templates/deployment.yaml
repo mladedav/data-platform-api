@@ -18,7 +18,7 @@ spec:
       - name: default
         image: mladedav/data-platform-api:{{ .Values.dockerTag }}
         ports:
-        - containerPort: 5000
+        - containerPort: 80
         volumeMounts:
         - name: configuration
           mountPath: "/config"
